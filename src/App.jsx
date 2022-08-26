@@ -1,12 +1,18 @@
-
+import { Container } from 'react-bootstrap';
+import Formulary from "./components/Formulary";
 
 function App() {
-
   return (
-    <div>
-      <h1>Hello World</h1>
-    </div>
-  )
+    <>
+      <header className="py-5">
+        <h1>Buscador de Cocktails </h1>
+      </header>
+
+      <Container className="mt-5">
+        <Formulary />
+      </Container>
+    </>
+  );
 }
 
-export default App
+export default App;
