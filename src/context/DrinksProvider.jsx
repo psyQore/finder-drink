@@ -4,8 +4,7 @@ import axios from "axios";
 const DrinksContext = createContext();
 
 const DrinksProvider = ({ children }) => {
-
-    const [drinks, setDrinks] = useState([]);
+  const [drinks, setDrinks] = useState([]);
 
   const getDrink = async (search) => {
     try {
@@ -19,7 +18,11 @@ const DrinksProvider = ({ children }) => {
   };
 
   return (
-    <DrinksContext.Provider value={{ getDrink }}>
+    <DrinksContext.Provider 
+    value={{ 
+        getDrink, 
+        drinks 
+    }}>
       {children}
     </DrinksContext.Provider>
   );
