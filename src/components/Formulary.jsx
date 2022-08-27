@@ -72,7 +72,7 @@ const Formulary = () => {
       <Row className="justify-content-end">
         <Col md={3}>
           <Button type="submit" variant="danger" className="text-uppercase w-100">
-            Buscar Cocktail
+            Buscar
           </Button>
         </Col>
       </Row>
