@@ -23,9 +23,11 @@ const CategoriesProvider = ({ children }) => {
   }, []);
 
   return (
-    <CategoriesContext.Provider value={{
-        categories
-    }}>
+    <CategoriesContext.Provider
+      value={{
+        categories,
+      }}
+    >
       {children}
     </CategoriesContext.Provider>
   );
