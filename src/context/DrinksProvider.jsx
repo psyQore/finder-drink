@@ -7,9 +7,10 @@ const DrinksProvider = ({ children }) => {
   const [drinks, setDrinks] = useState([]);
   const [modal, setModal] = useState(false);
   const [drinkID, setDrinkID] = useState(null);
+  const [recipe, setRecipe] = useState({});
 
   useEffect(() => {
-    const getPescription = async () => {
+    const getRecipe = async () => {
       if (!drinkID) return;
 
       try {
@@ -17,12 +18,12 @@ const DrinksProvider = ({ children }) => {
 
         const { data } = await axios(url);
 
-        console.log(data.drinks[0]);
+        setRecipe(data.drinks[0]);
       } catch (error) {
         console.log(error);
       }
     };
-    getPescription();
+    getRecipe();
   }, [drinkID]);
 
   const getDrink = async (search) => {
@@ -52,6 +53,7 @@ const DrinksProvider = ({ children }) => {
         handleModalClick,
         modal,
         handleDrinkClick,
+        recipe
       }}
     >
       {children}
