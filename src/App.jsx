@@ -1,10 +1,14 @@
 import { Container } from "react-bootstrap";
 import Formulary from "./components/Formulary";
 import ListDrinks from "./components/ListDrinks";
+import ModalDrink from "./components/ModalDrink";
+import useDrinks from "./hooks/useDrinks";
+
 import { CategoriesProvider } from "./context/CategoryProvider";
 import { DrinksProvider } from "./context/DrinksProvider";
 
 function App() {
+
   return (
     <CategoriesProvider>
       <DrinksProvider>
@@ -16,6 +20,7 @@ function App() {
           <Container className="mt-5">
             <Formulary />
             <ListDrinks/>
+            <ModalDrink/>
           </Container>
         </>
       </DrinksProvider>
