@@ -6,6 +6,24 @@ const DrinksContext = createContext();
 const DrinksProvider = ({ children }) => {
   const [drinks, setDrinks] = useState([]);
   const [modal, setModal] = useState(false);
+  const [drinkID, setDrinkID] = useState(null);
+
+  useEffect(() => {
+    const getPescription = async () => {
+      if (!drinkID) return;
+
+      try {
+        const url = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${drinkID}`;
+
+        const { data } = await axios(url);
+
+        console.log(data.drinks[0]);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getPescription();
+  }, [drinkID]);
 
   const getDrink = async (search) => {
     try {
@@ -20,16 +38,22 @@ const DrinksProvider = ({ children }) => {
 
   const handleModalClick = () => {
     setModal(!modal);
-  }
+  };
+
+  const handleDrinkClick = (id) => {
+    setDrinkID(id);
+  };
 
   return (
-    <DrinksContext.Provider 
-    value={{ 
-        getDrink, 
+    <DrinksContext.Provider
+      value={{
+        getDrink,
         drinks,
         handleModalClick,
-        modal
-    }}>
+        modal,
+        handleDrinkClick,
+      }}
+    >
       {children}
     </DrinksContext.Provider>
   );
